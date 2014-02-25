@@ -1,0 +1,5 @@
+= link_to 'back', :back
+= simple_form_for @repository do |f|
+  = f.error_notification
+  = f.input :url
+  = f.submit

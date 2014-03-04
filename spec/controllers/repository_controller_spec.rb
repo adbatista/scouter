@@ -24,7 +24,7 @@ describe RepositoriesController do
 
   describe "POST 'create'" do
     it "redirect" do
-      post 'create', repository: {url: Rails.root.join('tmp/test/example.git').to_s}
+      post 'create', repository: {url: Rails.root.join('spec/support_files/example.git').to_s}
       expect(response).to be_redirect
     end
   end

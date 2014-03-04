@@ -6,13 +6,20 @@ class RepositoriesController < ApplicationController
   end
 
   def create
-    processor = Processor.new repository_params[:url]
-    processor.process
-    repo = Repository.new processor.data
-    if repo.save
-      redirect_to repo
-    else
-      redirect_to repositories_path, alert: "Already exists a repository with that name."
+    @repository = Repository.new repository_params
+    
+    if @repository.valid?
+      processor = Processor.new @repository.url
+      processor.process
+      @repository.attributes = processor.data
+    end
+
+    respond_to do |format|
+      if @repository.save
+        format.html { redirect_to @repository, notice: 'Repository was successfully created.' }
+      else
+        format.html { render action: 'new' }
+      end
     end
    end 
 

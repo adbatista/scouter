@@ -7,8 +7,6 @@ gem 'sass-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails'
 
-# gem 'therubyracer', platforms: :ruby
-
 gem 'jquery-rails'
 gem 'turbolinks'
 
@@ -16,7 +14,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 group :development do
-  gem 'better_errors'
+  gem 'better_errors', '~> 1.1'
 end
 
 group :doc do
@@ -24,22 +22,19 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-# Use unicorn as the app server
-# gem 'unicorn'
-
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'git'
-gem 'flog', require: 'flog_cli'
-gem 'haml-rails'
-gem 'simple_form'
+gem 'git', '~> 1.2'
+gem 'flog', '~> 4.2', require: 'flog_cli'
+gem 'haml-rails', '~> 0.5'
+gem 'simple_form', '~> 3.0'
 
 group :test do
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 2.14'
   gem 'factory_girl_rails', '~> 4.4'
   gem 'capybara', '~> 2.2'
 end

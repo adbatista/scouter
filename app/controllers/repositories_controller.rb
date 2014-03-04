@@ -7,12 +7,8 @@ class RepositoriesController < ApplicationController
 
   def create
     @repository = Repository.new repository_params
-    
-    if @repository.valid?
-      processor = Processor.new @repository.url
-      processor.process
-      @repository.attributes = processor.data
-    end
+
+    process_and_assign_respository_data if @repository.valid?
 
     respond_to do |format|
       if @repository.save
@@ -21,7 +17,7 @@ class RepositoriesController < ApplicationController
         format.html { render action: 'new' }
       end
     end
-   end 
+   end
 
   def new
     @repository = Repository.new
@@ -32,7 +28,16 @@ class RepositoriesController < ApplicationController
   end
 
   private
-    def repository_params
-      params.require(:repository).permit(:url)
+  def repository_params
+    params.require(:repository).permit(:url)
+  end
+
+  def process_and_assign_respository_data
+    processor = Processor.new @repository.url
+    processor.process
+    @repository.attributes = processor.data
+    @repository.method_details = processor.method_details.map do |detail|
+      MethodDetail.new(detail: detail)
     end
+  end
 end

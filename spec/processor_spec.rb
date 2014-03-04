@@ -11,18 +11,24 @@ describe Processor do
 
       expect(subject.complexity_score).to be_within(0.1).of(10.7)
     end
+
+    it "get methods scores" do
+      subject.analyze_complexity file
+
+      expect(subject.method_details).to be_any {|item| item =~ /Test#method1/}
+    end
   end
 
   describe "#process" do
     it "process repository" do
       allow(subject).to receive(:create_repository)
-      
+
       expect(subject).to receive(:analyze_complexity)
 
       subject.process
     end
   end
-  
+
   it "get required attributes for repository" do
     allow(subject).to receive(:create_repository)
 

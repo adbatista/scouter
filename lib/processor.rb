@@ -1,30 +1,36 @@
+require 'forwardable'
+require 'stringio'
+
 class Processor
+  extend Forwardable
+
+  def_delegator :@complexity_processor, :total_score, :complexity_score
+  def_delegator :@complexity_processor, :flog, :analyze_complexity
+
   attr_reader :repository
 
   def initialize repository
     @repository            = repository
     @complexity_processor  = FlogCLI.new
   end
-  
+
   def process
     path = create_repository @repository
 
-    analyze_complexity path
-
+    analyze_complexity *path
   ensure
     destroy_files path
   end
 
-  def analyze_complexity repository_path
-    @complexity_processor.flog *repository_path
+  def method_details
+    result = StringIO.new
+    @complexity_processor.output_details result
+    result.rewind
+    result.readlines.select{|line| line != "\n"}
   end
 
   def data
     {url: @repository, score: complexity_score}
-  end
-
-  def complexity_score
-    @complexity_processor.total_score
   end
 
   private

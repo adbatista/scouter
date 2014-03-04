@@ -12,7 +12,7 @@ class RepositoriesController < ApplicationController
     if repo.save
       redirect_to repo
     else
-      redirect_to repositories_path, alert: "There is a repository with this name"
+      redirect_to repositories_path, alert: "Already exists a repository with that name."
     end
    end 
 

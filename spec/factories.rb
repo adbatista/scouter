@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :repository do
-    url '../tmp/test/example.git'
+    url 'path/example.git'
     score 1.4
   end
 end

@@ -1,23 +1,30 @@
 class Processor
-  attr_reader :repository, :score
+  attr_reader :repository
 
-  def initialize(repository)
-    @repository = repository
+  def initialize repository
+    @repository            = repository
+    @complexity_processor  = FlogCLI.new
   end
   
   def process
     path = create_repository @repository
-    files =  FlogCLI.expand_dirs_to_files path
-    flog = Flog.new
-    flog.flog *files
-    
-    @score = flog.total_score
+
+    analyze_complexity path
+
+  ensure
     destroy_files path
-    self
+  end
+
+  def analyze_complexity repository_path
+    @complexity_processor.flog *repository_path
   end
 
   def data
-    {url: @repository, score: @score}
+    {url: @repository, score: complexity_score}
+  end
+
+  def complexity_score
+    @complexity_processor.total_score
   end
 
   private

@@ -33,6 +33,7 @@ gem 'git', '~> 1.2'
 gem 'flog', '~> 4.2', require: 'flog_cli'
 gem 'haml-rails', '~> 0.5'
 gem 'simple_form', '~> 3.0'
+gem 'bootstrap-sass', '~> 3.1.1'
 
 group :test do
   gem 'rspec-rails', '~> 2.14'

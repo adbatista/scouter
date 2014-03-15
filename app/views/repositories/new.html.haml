@@ -1,5 +1,4 @@
-= link_to 'back', :back
-= simple_form_for @repository do |f|
-  = f.error_notification
-  = f.input :url
-  = f.submit
+= link_to 'Back', :back
+= simple_form_for(@repository, defaults: { wrapper_html: {class: 'form-group'}, input_html: { class: 'form-control' }}) do |f|
+  = f.input :url, label: "Repository location"
+  = f.submit class: "btn btn-default"

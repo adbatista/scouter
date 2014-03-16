@@ -16,6 +16,7 @@ gem 'jbuilder', '~> 1.2'
 group :development do
   gem 'better_errors', '~> 1.1'
   gem 'binding_of_caller'
+  gem 'web-console'
 end
 
 group :doc do
@@ -39,4 +40,6 @@ group :test do
   gem 'rspec-rails', '~> 2.14'
   gem 'factory_girl_rails', '~> 4.4'
   gem 'capybara', '~> 2.2'
+  gem 'simplecov'
 end
+# gem 'sprockets-sass'

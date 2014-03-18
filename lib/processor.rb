@@ -1,36 +1,31 @@
 require 'forwardable'
 require 'stringio'
+require 'fileutils'
 
 class Processor
   extend Forwardable
 
-  def_delegator :@complexity_processor, :total_score, :complexity_score
   def_delegator :@complexity_processor, :flog, :analyze_complexity
 
   attr_reader :repository
 
-  def initialize repository
-    @repository            = repository
-    @complexity_processor  = FlogCLI.new
+  def initialize complexity=FlogCLI.new
+    @complexity_processor = complexity
   end
 
-  def process
-    path = create_repository @repository
+  def process repository
+    path = create_repository repository
 
-    analyze_complexity *path
+    @complexity_processor.flog *path
+    @complexity_processor.calculate
   ensure
     destroy_files path
   end
 
-  def method_details
-    result = StringIO.new
-    @complexity_processor.output_details result
-    result.rewind
-    result.readlines.select{|line| line != "\n"}
-  end
-
-  def data
-    {url: @repository, score: complexity_score}
+  def class_details
+    @complexity_processor.scores.map do |klass,score|
+      {class_name: klass, score: score}
+    end
   end
 
   private

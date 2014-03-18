@@ -11,6 +11,6 @@ describe "repositories/new.html.haml" do
 
   it "show back link" do
     render
-    expect(rendered).to have_link 'back'
+    expect(rendered).to have_link 'Back'
   end
 end

@@ -8,7 +8,7 @@ class RepositoriesController < ApplicationController
   def create
     @repository = Repository.new repository_params
 
-    process_and_assign_respository_data if @repository.valid?
+    process_and_assign_respository_data
 
     respond_to do |format|
       if @repository.save
@@ -33,11 +33,11 @@ class RepositoriesController < ApplicationController
   end
 
   def process_and_assign_respository_data
-    processor = Processor.new @repository.url
-    processor.process
-    @repository.attributes = processor.data
-    @repository.method_details = processor.method_details.map do |detail|
-      MethodDetail.new(detail: detail)
+    processor = Processor.new
+    processor.process @repository.url
+    class_details = processor.class_details
+    @repository.class_details = class_details.map do |detail|
+      ClassDetail.new(detail)
     end
   end
 end

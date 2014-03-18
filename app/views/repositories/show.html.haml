@@ -1,13 +1,10 @@
 = link_to "repositories", repositories_path
 %h2 Complexity
 %p
-  Total
-  = @repository.score
-%p
   Url
   = @repository.url
 %hr/
 %h2 Method Details
 %ul
-  - @repository.method_details.each do |method_detail|
-    %li=method_detail
+  - @repository.class_details.each do |class_detail|
+    %li= class_detail

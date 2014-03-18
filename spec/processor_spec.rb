@@ -1,39 +1,34 @@
 require 'spec_helper'
 
 describe Processor do
-  let(:repo){'path/example.git'}
-  subject {Processor.new repo}
+  let(:flog){ double("Flog").as_null_object }
+  let(:repo){'path/example.git' }
+  subject{ Processor.new flog }
+  let(:file){ 'spec/support_files/example.rb' }
 
-  describe "#analyze_complexity" do
-    let(:file) { 'spec/support_files/example.rb' }
-    it "get score" do
-      subject.analyze_complexity file
+  describe "#class_details" do
+    it "return class name and respective score" do
+      allow(flog).to receive(:scores).and_return({'Test' => 10.7 })
 
-      expect(subject.complexity_score).to be_within(0.1).of(10.7)
-    end
-
-    it "get methods scores" do
-      subject.analyze_complexity file
-
-      expect(subject.method_details).to be_any {|item| item =~ /Test#method1/}
+      expect(subject.class_details).to include({ class_name: 'Test', score:  10.7 })
     end
   end
 
   describe "#process" do
-    it "process repository" do
+    before do
       allow(subject).to receive(:create_repository)
-
-      expect(subject).to receive(:analyze_complexity)
-
-      subject.process
     end
-  end
 
-  it "get required attributes for repository" do
-    allow(subject).to receive(:create_repository)
+    it "process repository" do
+      expect(flog).to receive(:flog)
 
-    subject.process
+      subject.process repo
+    end
 
-    expect(subject.data).to include(:url,:score)
+    it "calculate score" do
+      expect(flog).to receive(:calculate)
+
+      subject.process repo
+    end
   end
 end

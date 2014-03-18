@@ -42,4 +42,3 @@ group :test do
   gem 'capybara', '~> 2.2'
   gem 'simplecov'
 end
-# gem 'sprockets-sass'

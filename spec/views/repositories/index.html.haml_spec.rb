@@ -8,21 +8,20 @@ describe "repositories/index.html.haml" do
       repository,
       repository2
     ])
+
+    render
   end
 
   it "displays all repositories url" do
-    render
     expect(rendered).to have_content "repo_example.git"
     expect(rendered).to have_content "repo_example2.git"
   end
 
   it "shows a link to new repository" do
-    render
     expect(rendered).to have_link 'New repository'
   end
 
   it 'repositories have a link to their page' do
-    render
     expect(rendered).to have_link 'show'
   end
 end

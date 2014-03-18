@@ -11,20 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140304185842) do
+ActiveRecord::Schema.define(version: 20140318200103) do
 
-  create_table "method_details", force: true do |t|
-    t.string   "detail"
+  create_table "class_details", force: true do |t|
+    t.string   "class_name"
+    t.float    "score"
     t.integer  "repository_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "method_details", ["repository_id"], name: "index_method_details_on_repository_id"
+  add_index "class_details", ["repository_id"], name: "index_class_details_on_repository_id"
 
   create_table "repositories", force: true do |t|
     t.string   "url"
-    t.string   "score"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

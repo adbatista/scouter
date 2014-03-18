@@ -3,11 +3,9 @@
   %thead
     %tr
       %th Url
-      %th Score
       %th
   %tbody
   - @repositories.each do |repository|
     %tr
       %td= repository.url
-      %td= repository.score
       %td= link_to 'show', repository

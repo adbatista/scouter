@@ -4,5 +4,8 @@
 /db/*.sqlite3-journal
 
 /log/*.log
-/tmp
 /coverage
+/tmp/*
+!/tmp/repos/
+/tmp/repos/*
+!/tmp/repos/.keep

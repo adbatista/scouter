@@ -31,10 +31,14 @@ describe RepositoriesController do
       expect(response).to be_redirect
     end
 
-    it "redirect" do
-      post 'create', repository: { url: url }
+    context "url of existent repository" do
+      it "show new repository page" do
+        create(:repository, url: url)
 
-      expect(response).to render_template(:new)
+        post 'create', repository: { url: url }
+
+        expect(response).to render_template(:new)
+      end
     end
   end
 

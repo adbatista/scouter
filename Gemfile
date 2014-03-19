@@ -41,4 +41,5 @@ group :test do
   gem 'factory_girl_rails', '~> 4.4'
   gem 'capybara', '~> 2.2'
   gem 'simplecov'
+  gem 'coveralls', require: false
 end

@@ -1,10 +1,15 @@
 require 'simplecov'
-require 'coveralls'
 
-SimpleCov.formatter = Coveralls::SimpleCov::Formatter
+formatters = [ SimpleCov::Formatter::HTMLFormatter ]
+
+if ENV['TRAVIS']
+  require 'coveralls'
+  formatters << Coveralls::SimpleCov::Formatter
+end
+
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[*formatters]
 SimpleCov.start 'rails'
 
-# This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'

@@ -23,19 +23,22 @@ describe RepositoriesController do
   end
 
   describe "POST 'create'" do
-    let(:url){ 'https://github.com/adbatista/scouter.git' }
+    let(:repo_attr){ FactoryGirl.attributes_for :repository }
 
     it "redirect" do
-      post 'create', repository: {url: url }
+      allow(subject).to receive(:process_and_assign_respository_data)
+
+      post 'create', repository: repo_attr
 
       expect(response).to be_redirect
     end
 
     context "url of existent repository" do
       it "show new repository page" do
-        create(:repository, url: url)
+      allow(subject).to receive(:process_and_assign_respository_data)
+        create(:repository)
 
-        post 'create', repository: { url: url }
+        post 'create', repository: repo_attr
 
         expect(response).to render_template(:new)
       end

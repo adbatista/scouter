@@ -5,6 +5,6 @@ FactoryGirl.define do
   end
 
   factory :repository do
-    url 'path/example.git'
+    url 'http://example.com/abc.git'
   end
 end

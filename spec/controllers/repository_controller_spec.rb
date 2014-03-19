@@ -27,6 +27,15 @@ describe RepositoriesController do
       post 'create', repository: {url: Rails.root.join('spec/support_files/example.git').to_s}
       expect(response).to be_redirect
     end
+
+    it "redirect" do
+      url = Rails.root.join('spec/support_files/example.git').to_s
+      create(:repository, url: url)
+
+      post 'create', repository: { url: url }
+
+      expect(response).to render_template(:new)
+    end
   end
 
   describe "GET 'index'" do

@@ -3,6 +3,6 @@ class ClassDetail < ActiveRecord::Base
   validates_presence_of :class_name, :score
 
   def to_s
-    "#{score} #{class_name}"
+    "%.2f - %s" % [ score, class_name ]
   end
 end

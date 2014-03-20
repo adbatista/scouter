@@ -43,3 +43,5 @@ group :test do
   gem 'simplecov'
   gem 'coveralls', require: false
 end
+
+gem 'thread_safe', github: 'headius/thread_safe', tag: '0.3.0'

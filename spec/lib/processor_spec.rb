@@ -1,10 +1,9 @@
 require 'spec_helper'
 
 describe Processor do
-  let(:flog){ double("Flog").as_null_object }
-  let(:repo){'path/example.git' }
-  subject{ Processor.new flog }
-  let(:file){ 'spec/support_files/example.rb' }
+  let(:flog) { double("Flog").as_null_object }
+  let(:repository_handler) { double("RepositoryHandler").as_null_object }
+  subject { Processor.new flog, repository_handler }
 
   describe "#class_details" do
     it "return class name and respective score" do
@@ -15,8 +14,10 @@ describe Processor do
   end
 
   describe "#process" do
+    let(:repo) {'path/example.git' }
+
     before do
-      allow(subject).to receive(:create_repository)
+      allow(repository_handler).to receive(:create_repository)
     end
 
     it "process repository" do

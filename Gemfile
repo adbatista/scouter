@@ -31,7 +31,7 @@ end
 # gem 'debugger', group: [:development, :test]
 
 gem 'git', '~> 1.2'
-gem 'flog', '~> 4.2', require: 'flog_cli'
+gem 'metric_fu', '~> 4.9.0'
 gem 'haml-rails', '~> 0.5'
 gem 'simple_form', '~> 3.0'
 gem 'bootstrap-sass', '~> 3.1.1'

@@ -25,7 +25,7 @@ class Processor
         class_name: class_details[:name],
         score:      class_details[:total_score],
         method_count: class_details[:methods].count,
-        method_average: class_details[:average_score],
+        method_average: class_details[:average_score]
       }
     end
   end

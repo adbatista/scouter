@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140318200103) do
+ActiveRecord::Schema.define(version: 20140326182527) do
 
   create_table "class_details", force: true do |t|
     t.string   "class_name"
@@ -19,6 +19,11 @@ ActiveRecord::Schema.define(version: 20140318200103) do
     t.integer  "repository_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "lines"
+    t.integer  "linesOfCode"
+    t.float    "average"
+    t.integer  "method_count"
+    t.float    "lines_per_method"
   end
 
   add_index "class_details", ["repository_id"], name: "index_class_details_on_repository_id"

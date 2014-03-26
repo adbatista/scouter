@@ -12,7 +12,7 @@ class Processor
     options = {}
 
     Dir.chdir path do
-      @metric_processor.run_only %w{ flog }, options
+      @metric_processor.run_only %w{ flog stats }, options
     end
 
   ensure
@@ -24,7 +24,8 @@ class Processor
       {
         class_name: class_details[:name],
         score:      class_details[:total_score],
-        method_count: class_details[:methods].count
+        method_count: class_details[:methods].count,
+        method_average: class_details[:average_score],
       }
     end
   end

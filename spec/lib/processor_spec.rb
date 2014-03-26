@@ -8,7 +8,7 @@ describe Processor do
   describe "#class_details" do
     it "return complexity metrics" do
       metric_result = { flog: { :method_containers=>[ { name: "Test", total_score: 10.7 } ] }}
-      allow(metric).to receive(:result).and_return(metric_result)
+      metric.stub_chain(:result, :result_hash).and_return(metric_result)
 
       expect(subject.class_details).to include({ class_name: 'Test', score:  10.7 })
     end
@@ -22,7 +22,7 @@ describe Processor do
     end
 
     it "process repository" do
-      expect(metric).to receive(:run_only).with(%w{ flog })
+      expect(metric).to receive(:run_only).with(%w{ flog },{})
 
       subject.process repo
     end

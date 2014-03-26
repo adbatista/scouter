@@ -1,8 +1,8 @@
 require "spec_helper"
 
 describe "repositories/index.html.haml" do
-  let(:repository) { stub_model(Repository, url: "repo_example.git") }
-  let(:repository2) { stub_model(Repository, url: "repo_example2.git") }
+  let(:repository) { stub_model(Repository,  url: "user/repo_example.git") }
+  let(:repository2) { stub_model(Repository, url: "user/repo_example2.git") }
   before do
     assign(:repositories, [
       repository,
@@ -12,9 +12,9 @@ describe "repositories/index.html.haml" do
     render
   end
 
-  it "displays all repositories url" do
-    expect(rendered).to have_content "repo_example.git"
-    expect(rendered).to have_content "repo_example2.git"
+  it "displays all repositories name" do
+    expect(rendered).to have_content "user/repo_example"
+    expect(rendered).to have_content "user/repo_example2"
   end
 
   it "shows a link to new repository" do
@@ -22,6 +22,6 @@ describe "repositories/index.html.haml" do
   end
 
   it 'repositories have a link to their page' do
-    expect(rendered).to have_link 'show'
+    expect(rendered).to have_link 'user/repo_example'
   end
 end

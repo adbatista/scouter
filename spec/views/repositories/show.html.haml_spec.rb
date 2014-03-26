@@ -6,7 +6,7 @@ describe "repositories/show.html.haml" do
       stub_model(ClassDetail, class_name: "Example1", score: 10.1),
       stub_model(ClassDetail, class_name: "Example2", score: 9.1)
     ]
-    assign :repository, stub_model(Repository, url: "repo_example.git", class_details: class_details)
+    assign :repository, stub_model(Repository, url: "user/repo_example.git", class_details: class_details)
 
     render
   end
@@ -16,7 +16,7 @@ describe "repositories/show.html.haml" do
   end
 
   it "show repository url" do
-    expect(rendered).to have_content "repo_example.git"
+    expect(rendered).to have_content "user/repo_example"
   end
 
   it "show method details list" do

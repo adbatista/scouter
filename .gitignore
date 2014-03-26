@@ -9,3 +9,4 @@
 !/tmp/repos/
 /tmp/repos/*
 !/tmp/repos/.keep
+Gemfile.lock

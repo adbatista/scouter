@@ -1,10 +1,14 @@
 = link_to "repositories", repositories_path
-%h2 Complexity
-%p
-  Url
-  = @repository.url
+%p= @repository.name
 %hr/
-%h2 Method Details
-%ul
-  - @repository.class_details.each do |class_detail|
-    %li= class_detail
+%h2 Classes
+%table.table.table-striped.table-bordered
+  %thead
+    %tr
+      %th Score
+      %th Class
+  %tbody
+    - @repository.class_details.each do |class_detail|
+      %tr
+        %td= class_detail.formated_score
+        %td= class_detail.class_name

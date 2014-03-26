@@ -3,9 +3,7 @@
   %thead
     %tr
       %th Url
-      %th
   %tbody
   - @repositories.each do |repository|
     %tr
-      %td= repository.url
-      %td= link_to 'show', repository
+      %td= link_to repository.name, repository

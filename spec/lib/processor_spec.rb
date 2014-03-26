@@ -7,10 +7,10 @@ describe Processor do
 
   describe "#class_details" do
     it "return complexity metrics" do
-      metric_result = { flog: { :method_containers=>[ { name: "Test", total_score: 10.7, methods: {'some_method' => {score: 3.0}}}]}}
+      metric_result = { flog: { :method_containers=>[ { name: "Test", total_score: 10.7, methods: {'some_method' => {}}}]}}
       metric.stub_chain(:result, :result_hash).and_return(metric_result)
 
-      expect(subject.class_details).to include({ class_name: 'Test', score:  10.7, method_details:[{ name: 'some_method',score: 3.0}]})
+      expect(subject.class_details).to include({ class_name: 'Test', score:  10.7, method_count:1})
     end
   end
 

@@ -24,18 +24,7 @@ class Processor
       {
         class_name: class_details[:name],
         score:      class_details[:total_score],
-        method_details: method_details(class_details[:methods])
-      }
-    end
-  end
-
-  private
-  def method_details methods
-    puts methods
-    methods.map do |method_full_name, details|
-      {
-        name: method_full_name,
-        score: details[:score]
+        method_count: class_details[:methods].count
       }
     end
   end

@@ -14,7 +14,7 @@ class RepositoriesController < ApplicationController
       if @repository.save
         format.html { redirect_to @repository, notice: 'Repository was successfully created.' }
       else
-        format.html { render action: 'new' }
+        format.html { render 'new' }
       end
     end
    end

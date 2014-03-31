@@ -10,3 +10,4 @@
 /tmp/repos/*
 !/tmp/repos/.keep
 Gemfile.lock
+/config/initializers/secret_token.rb

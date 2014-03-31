@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails',  '~> 4.0'
+gem 'rails', '~> 4.0'
 gem 'sqlite3'
 gem 'sprockets-rails'
 gem 'sass-rails', '~> 4.0.0'
@@ -30,8 +30,8 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'git', '~> 1.2'
-gem 'metric_fu', '~> 4.9.0'
+gem 'git', '~> 1.2', require: false
+gem 'metric_fu', '~> 4.9.0', require: false
 gem 'haml-rails', '~> 0.5'
 gem 'simple_form', '~> 3.0'
 gem 'bootstrap-sass', '~> 3.1.1'

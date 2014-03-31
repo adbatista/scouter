@@ -5,10 +5,10 @@
 %table.table.table-striped.table-bordered
   %thead
     %tr
-      %th Score
+      %th.col-md-1 Score
       %th Class
   %tbody
     - @repository.class_details.each do |class_detail|
       %tr
-        %td= class_detail.formated_score
-        %td= class_detail.class_name
+        %td= format class_detail.score
+        %td= link_to class_detail.class_name, class_detail

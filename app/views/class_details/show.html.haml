@@ -1,12 +1,16 @@
 .well
-  %h2=@class_detail.class_name
-  %hr/
-  %p
-    =format @class_detail.score
-    %strong Score
-  %p
-    =format @class_detail.method_average
-    %strong  Average Score/Method
-  %p
-    =@class_detail.method_count
-    %strong Methods
+  .row
+    %h2= @class_detail.class_name
+    %hr/
+    .col-md-2
+      %h3= @class_detail.grade
+    .col-md-10
+      %p
+        =format @class_detail.score
+        %strong Score
+      %p
+        =format @class_detail.method_average
+        %strong Average Score/Method
+      %p
+        =@class_detail.method_count
+        %strong Methods

@@ -31,7 +31,7 @@ end
 # gem 'debugger', group: [:development, :test]
 
 gem 'git', '~> 1.2', require: false
-gem 'metric_fu', '~> 4.9.0', require: false
+gem 'metric_fu', '~> 4.10.0', require: false
 gem 'haml-rails', '~> 0.5'
 gem 'simple_form', '~> 3.0'
 gem 'bootstrap-sass', '~> 3.1.1'
@@ -43,5 +43,3 @@ group :test do
   gem 'simplecov'
   gem 'coveralls', require: false
 end
-
-gem 'thread_safe', github: 'headius/thread_safe', tag: '0.3.0'

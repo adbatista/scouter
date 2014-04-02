@@ -5,4 +5,12 @@
 [![Code Climate](https://codeclimate.com/github/adbatista/scouter.png)](https://codeclimate.com/github/adbatista/scouter)
 [![Dependency Status](https://gemnasium.com/adbatista/scouter.svg)](https://gemnasium.com/adbatista/scouter)
 
-Code quality analyzer
+Open source code quality analyzer
+
+Scouter is an online tool for static code analysis.
+
+## TODO
+* Improve project description
+* Move code analysis to background job
+* Add duplication analysis
+* Add security analysis (Brakeman)

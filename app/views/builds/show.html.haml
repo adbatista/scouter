@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Repository:
+  = @build.repository
+%p
+  %b State:
+  = @build.state
+
+= link_to 'Edit', edit_build_path(@build)
+\|
+= link_to 'Back', builds_path

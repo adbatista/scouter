@@ -9,4 +9,6 @@ FactoryGirl.define do
   factory :repository do
     url 'http://example.com/abc.git'
   end
+
+  factory :build
 end

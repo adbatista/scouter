@@ -7,7 +7,7 @@ FactoryGirl.define do
   end
 
   factory :repository do
-    url 'http://example.com/abc.git'
+    name 'adbatista/scouter'
   end
 
   factory :build

@@ -11,26 +11,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140326182527) do
+ActiveRecord::Schema.define(version: 20140408022723) do
 
-  create_table "class_details", force: true do |t|
-    t.string   "class_name"
-    t.float    "score"
+  create_table "builds", force: true do |t|
     t.integer  "repository_id"
+    t.string   "state"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  add_index "builds", ["repository_id"], name: "index_builds_on_repository_id"
+
+  create_table "klasses", force: true do |t|
+    t.string   "name"
+    t.float    "score"
     t.float    "method_average"
     t.integer  "method_count"
-  end
-
-  add_index "class_details", ["repository_id"], name: "index_class_details_on_repository_id"
-
-  create_table "repositories", force: true do |t|
-    t.string   "url"
+    t.integer  "build_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "repositories", ["url"], name: "index_repositories_on_url", unique: true
+  add_index "klasses", ["build_id"], name: "index_klasses_on_build_id"
+
+  create_table "repositories", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "repositories", ["name"], name: "index_repositories_on_name", unique: true
 
 end

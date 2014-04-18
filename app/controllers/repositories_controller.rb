@@ -1,15 +1,14 @@
 class RepositoriesController < ApplicationController
   def show
     @repository = Repository.find params[:id]
+    @classes    = @repository.klasses
   rescue ActiveRecord::RecordNotFound
     redirect_to root_path, alert: "Repository not found"
   end
 
   def create
     @repository = Repository.new repository_params
-
-    @repository.attributes = process_and_assign_respository_data @repository.url
-
+    # @repository.attributes = process_and_assign_respository_data @repository.name
     respond_to do |format|
       if @repository.save
         format.html { redirect_to @repository, notice: 'Repository was successfully created.' }
@@ -29,16 +28,6 @@ class RepositoriesController < ApplicationController
 
   private
   def repository_params
-    params.require(:repository).permit(:url)
-  end
-
-  def process_and_assign_respository_data url
-    processor = Processor.new
-    processor.process url
-
-    class_details = processor.class_details.map do |detail|
-      ClassDetail.new(detail)
-    end
-    { class_details: class_details }
+    params.require(:repository).permit(:name)
   end
 end

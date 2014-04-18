@@ -3,7 +3,7 @@ require 'spec_helper'
 describe RepositoriesController do
   describe "GET 'show'" do
     it "returns http success" do
-      repo = create(:repository)
+      repo = create(:repository, builds: [ create(:build, klasses: [ create(:klass) ] ) ])
 
       get 'show', id: repo.id
       expect(response).to be_success

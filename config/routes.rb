@@ -1,4 +1,6 @@
 Scouter::Application.routes.draw do
+  resources :builds
+
   get "class_details/show/:id" => "class_details#show", as: :class_detail
   root to: 'repositories#index'
 

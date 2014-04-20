@@ -1,6 +1,18 @@
 = link_to "repositories", repositories_path
 %p= @repository.name
 %hr/
-- @classes.each do |klass|
-  = klass.name
-  = klass.grade
+- if @repository.current_build.completed?
+  %table.table.table-striped.table-bordered
+    %thead
+      %tr
+        %th.col-md-1 Grade
+        %th.col-md-1 Score
+        %th Class
+    %tbody
+      - @classes.each do |klass|
+        %tr
+          %td= klass.grade
+          %td= format(klass.score)
+          %td= klass.name
+- else
+  %p Processing ...

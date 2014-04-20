@@ -4,6 +4,11 @@ class Repository < ActiveRecord::Base
   validates_uniqueness_of :name, message: "This repository already exists"
   validates_format_of :name, with: %r{[\w-]+/[\w-]+}
 
+  def create_build
+    build = builds.new
+    build.run! if build.save
+  end
+
   def klasses
     current_build.try(:klasses) || []
   end
@@ -13,6 +18,6 @@ class Repository < ActiveRecord::Base
   end
 
   def current_build
-    builds.last
+    self.builds.last
   end
 end

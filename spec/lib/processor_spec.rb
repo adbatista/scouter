@@ -18,12 +18,9 @@ describe Processor do
       metric.stub_chain(:result, :result_hash).and_return(metric_result)
     end
 
-    it { expect(subject.class_details.first).to include(class_name: 'Test') }
-
+    it { expect(subject.class_details.first).to include(name: 'Test') }
     it { expect(subject.class_details.first).to include(score: 10.7) }
-
     it { expect(subject.class_details.first).to include(method_count:1) }
-
     it { expect(subject.class_details.first).to include(method_average: 8.0) }
   end
 

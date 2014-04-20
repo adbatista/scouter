@@ -8,9 +8,9 @@ class RepositoriesController < ApplicationController
 
   def create
     @repository = Repository.new repository_params
-    # @repository.attributes = process_and_assign_respository_data @repository.name
     respond_to do |format|
       if @repository.save
+        @repository.create_build
         format.html { redirect_to @repository, notice: 'Repository was successfully created.' }
       else
         format.html { render 'new' }

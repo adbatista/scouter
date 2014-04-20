@@ -26,8 +26,6 @@ describe RepositoriesController do
     let(:repo_attr){ FactoryGirl.attributes_for :repository }
 
     it "redirect" do
-      allow(subject).to receive(:process_and_assign_respository_data)
-
       post 'create', repository: repo_attr
 
       expect(response).to be_redirect

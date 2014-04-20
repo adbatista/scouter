@@ -44,3 +44,7 @@ group :test do
   gem 'simplecov'
   gem 'coveralls', require: false
 end
+
+gem 'aasm', '~>3.1.1'
+gem 'daemons', '~> 1.1.9'
+gem 'delayed_job_active_record', '~> 4.0.1'

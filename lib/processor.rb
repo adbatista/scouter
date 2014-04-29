@@ -12,7 +12,7 @@ class Processor
     options = {}
 
     Dir.chdir path do
-      @metric_processor.run_only %w{ flog stats }, options
+      @metric_processor.run_only ['flog'], options
     end
 
   ensure
@@ -22,9 +22,9 @@ class Processor
   def class_details
     @metric_processor.result.result_hash[:flog][:method_containers].map do |class_details|
       {
-        name: class_details[:name],
-        score:      class_details[:total_score],
-        method_count: class_details[:methods].count,
+        name:           class_details[:name],
+        score:          class_details[:total_score],
+        method_count:   class_details[:methods].count,
         method_average: class_details[:average_score]
       }
     end

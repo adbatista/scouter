@@ -1,18 +1,18 @@
-= link_to "repositories", repositories_path
-%p= @repository.name
+%h2.repo-name
+  = @repository.name
+  = link_to @repository.github_url, target: "_blank" do
+    .github-logo
 %hr/
 - if @repository.current_build.completed?
   %table.table.table-striped.table-bordered
     %thead
       %tr
-        %th.col-md-1 Grade
-        %th.col-md-1 Score
+        %th.col-md-1.center Grade
         %th Class
     %tbody
       - @classes.each do |klass|
         %tr
-          %td= klass.grade
-          %td= format(klass.score)
+          %td.center= image_tag "#{klass.grade}-mini.png"
           %td= klass.name
 - else
   %p Processing ...

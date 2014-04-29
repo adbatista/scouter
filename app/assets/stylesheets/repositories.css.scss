@@ -1,0 +1,27 @@
+// Place all the styles related to the repository controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.repo-name{
+  font-size: 34px;
+  letter-spacing: 2px;
+  line-height: 100%;
+}
+
+.repo-name{
+  .github-logo{
+    background: url("github-light-32.png");
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+  }
+  &:hover{
+    .github-logo{
+      background: url("github-32.png");
+    }
+  }
+}
+
+.center{
+  text-align: center;
+}

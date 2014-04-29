@@ -14,7 +14,11 @@ class Repository < ActiveRecord::Base
   end
 
   def clone_url
-    "https://github.com/#{name}.git"
+    "#{github_url}.git"
+  end
+
+  def github_url
+    "https://github.com/#{name}"
   end
 
   def current_build

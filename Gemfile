@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 4.1.0'
+gem 'rails', '~> 4.1.1'
 gem 'sqlite3'
 gem 'sprockets-rails'
 gem 'sass-rails', '~> 4.0.0'
@@ -8,28 +8,16 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails'
 
 gem 'jquery-rails'
-gem 'turbolinks'
-
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0.0'
 
 group :development do
   gem 'spring'
   gem 'better_errors', '~> 1.1'
   gem 'binding_of_caller'
-  gem 'web-console'
+  gem 'foreman'
 end
 
-group :doc do
-  # bundle exec rake doc:rails generates the API under doc/api.
-  gem 'sdoc', require: false
-end
-
-# Use Capistrano for deployment
-# gem 'capistrano', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
+gem 'sdoc', require: false, group: :doc
 
 gem 'git', '~> 1.2', require: false
 gem 'metric_fu', '~> 4.10.0', require: false
@@ -47,4 +35,3 @@ end
 
 gem 'aasm', '~>3.1.1'
 gem 'daemons', '~> 1.1.9'
-gem 'delayed_job_active_record', '~> 4.0.1'

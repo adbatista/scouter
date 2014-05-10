@@ -1,9 +1,8 @@
-= link_to "New repository", new_repository_path
 %table.table.table-striped
   %thead
     %tr
       %th Repositories
   %tbody
-  - @repositories.each do |repository|
-    %tr
-      %td= link_to repository.name, repository
+    - @repositories.each do |repository|
+      %tr
+        %td= link_to repository.name, "repository"

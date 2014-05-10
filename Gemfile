@@ -20,7 +20,7 @@ end
 gem 'sdoc', require: false, group: :doc
 
 gem 'git', '~> 1.2', require: false
-gem 'metric_fu', '~> 4.10.0', require: false
+gem 'metric_fu', '~> 4.11.0', require: false
 gem 'haml-rails', '~> 0.5'
 gem 'simple_form', '~> 3.0'
 gem 'bootstrap-sass', '~> 3.1.1'
@@ -31,7 +31,11 @@ group :test do
   gem 'capybara', '~> 2.2'
   gem 'simplecov'
   gem 'coveralls', require: false
+  gem 'shoulda-matchers', '~> 2.6.1'
 end
 
 gem 'aasm', '~>3.1.1'
 gem 'daemons', '~> 1.1.9'
+gem 'delayed_job_active_record', '~> 4.0.1'
+gem 'omniauth-github'
+gem 'octokit'

@@ -26,6 +26,20 @@
               <%= link_to "Repositories", repositories_path %>
             </li>
           </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <% if current_user %>
+              <li>
+                <p class="navbar-text">Signed in as <%= current_user.name %>!</p>
+              </li>
+              <li>
+                <%= link_to "Sign out", signout_path %>
+              </li>
+            <% else %>
+              <li>
+                <%= link_to "Sign in with GitHub","/auth/github" %>
+              </li>
+            <% end %>
+          </ul>
         </div>
       </div>
     </nav>

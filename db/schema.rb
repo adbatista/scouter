@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140418172620) do
+ActiveRecord::Schema.define(version: 20140504053441) do
 
   create_table "builds", force: true do |t|
     t.integer  "repository_id"
@@ -57,5 +57,15 @@ ActiveRecord::Schema.define(version: 20140418172620) do
   end
 
   add_index "repositories", ["name"], name: "index_repositories_on_name", unique: true
+
+  create_table "users", force: true do |t|
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
+    t.string   "token"
+    t.string   "github_username"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

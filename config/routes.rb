@@ -1,10 +1,11 @@
 Scouter::Application.routes.draw do
   root to: 'repositories#index'
 
-  resources :builds
-  get "class_details/show/:id" => "class_details#show", as: :class_detail
+  # resources :repositories, except: [:edit, :update, :destroy]
+  resources :repositories, only: %i{index show destroy create}
+  resources :builds, only: %i{ new create show index }
 
-  resources :repositories, except: [:edit, :update, :destroy]
+  get "class_details/show/:id" => "class_details#show", as: :class_detail
 
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')

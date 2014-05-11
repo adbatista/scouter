@@ -1,9 +1,8 @@
 Scouter::Application.routes.draw do
   root to: 'repositories#index'
 
-  # resources :repositories, except: [:edit, :update, :destroy]
-  resources :repositories, only: %i{index show destroy create}
-  resources :builds, only: %i{ new create show index }
+  resources :repositories, only: [:index, :show, :destroy, :create]
+  resources :builds, only: [:new, :create, :show, :index]
 
   get "class_details/show/:id" => "class_details#show", as: :class_detail
 
